@@ -4,35 +4,23 @@ import com.google.common.base.Preconditions;
 import org.bukkit.Material;
 import org.bukkit.Tag;
 import org.bukkit.block.BlockFace;
-import org.bukkit.block.data.type.Stairs;
+import org.bukkit.block.data.type.TrapDoor;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;
 
-public class StairsMock extends BlockDataMock implements Stairs
+public class TrapDoorMock extends BlockDataMock implements TrapDoor
 {
 
-	public StairsMock(@NotNull Material type)
+	public TrapDoorMock(@NotNull Material type)
 	{
 		super(type);
-		checkType(type, Tag.STAIRS);
-		setShape(Shape.STRAIGHT);
+		checkType(type, Tag.TRAPDOORS);
+		setHalf(Half.BOTTOM);
+		setOpen(false);
+		setPowered(false);
 		setWaterlogged(false);
 		setFacing(BlockFace.NORTH);
-		setHalf(Half.BOTTOM);
-	}
-
-	@Override
-	public @NotNull Shape getShape()
-	{
-		return get(SHAPE_KEY);
-	}
-
-	@Override
-	public void setShape(@NotNull Shape shape)
-	{
-		Preconditions.checkNotNull("Shape cannot be null");
-		set(SHAPE_KEY, shape);
 	}
 
 	@Override
@@ -65,7 +53,31 @@ public class StairsMock extends BlockDataMock implements Stairs
 	@Override
 	public @NotNull Set<BlockFace> getFaces()
 	{
-		return Set.of(BlockFace.NORTH, BlockFace.SOUTH, BlockFace.WEST, BlockFace.EAST);
+		return getCardinalFaces();
+	}
+
+	@Override
+	public boolean isOpen()
+	{
+		return get(OPEN_KEY);
+	}
+
+	@Override
+	public void setOpen(boolean open)
+	{
+		set(OPEN_KEY, open);
+	}
+
+	@Override
+	public boolean isPowered()
+	{
+		return get(POWERED_KEY);
+	}
+
+	@Override
+	public void setPowered(boolean powered)
+	{
+		set(POWERED_KEY, powered);
 	}
 
 	@Override

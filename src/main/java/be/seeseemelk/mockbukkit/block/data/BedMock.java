@@ -11,41 +11,37 @@ import java.util.Set;
 public class BedMock extends BlockDataMock implements Bed
 {
 
-	private static final String PART = "part";
-	private static final String OCCUPIED = "occupied";
-	private static final String FACING = "facing";
-
 	public BedMock(@NotNull Material type)
 	{
 		super(type);
 		checkType(type, MaterialTags.BEDS);
 		this.setFacing(BlockFace.NORTH);
-		super.set(OCCUPIED, false);
+		super.set(OCCUPIED_KEY, false);
 		this.setPart(Part.FOOT);
 	}
 
 	@Override
 	public @NotNull Part getPart()
 	{
-		return super.get(PART);
+		return super.get(PART_KEY);
 	}
 
 	@Override
 	public void setPart(@NotNull Part part)
 	{
-		super.set(PART, part);
+		super.set(PART_KEY, part);
 	}
 
 	@Override
 	public boolean isOccupied()
 	{
-		return super.get(OCCUPIED);
+		return super.get(OCCUPIED_KEY);
 	}
 
 	@Override
 	public @NotNull BlockFace getFacing()
 	{
-		return super.get(FACING);
+		return super.get(FACING_KEY);
 	}
 
 	@Override
@@ -56,7 +52,7 @@ public class BedMock extends BlockDataMock implements Bed
 		{
 			throw new IllegalArgumentException("Invalid face: " + facing);
 		}
-		super.set(FACING, facing);
+		super.set(FACING_KEY, facing);
 	}
 
 	@Override

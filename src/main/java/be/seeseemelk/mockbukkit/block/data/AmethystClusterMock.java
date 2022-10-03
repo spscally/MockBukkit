@@ -13,9 +13,6 @@ import java.util.Set;
 public class AmethystClusterMock extends BlockDataMock implements AmethystCluster, Directional, Waterlogged
 {
 
-	private static final String FACING = "facing";
-	private static final String WATERLOGGED = "waterlogged";
-
 	public AmethystClusterMock(@NotNull Material type)
 	{
 		super(type);
@@ -27,7 +24,7 @@ public class AmethystClusterMock extends BlockDataMock implements AmethystCluste
 	@Override
 	public @NotNull BlockFace getFacing()
 	{
-		return super.get(FACING);
+		return super.get(FACING_KEY);
 	}
 
 	@Override
@@ -35,7 +32,7 @@ public class AmethystClusterMock extends BlockDataMock implements AmethystCluste
 	{
 		Preconditions.checkNotNull(facing, "Facing cannot be null");
 		Preconditions.checkArgument(getFaces().contains(facing), "Invalid face. Must be one of " + getFaces());
-		super.set(FACING, facing);
+		super.set(FACING_KEY, facing);
 	}
 
 	@Override
@@ -47,13 +44,13 @@ public class AmethystClusterMock extends BlockDataMock implements AmethystCluste
 	@Override
 	public boolean isWaterlogged()
 	{
-		return super.get(WATERLOGGED);
+		return super.get(WATERLOGGED_KEY);
 	}
 
 	@Override
 	public void setWaterlogged(boolean waterlogged)
 	{
-		super.set(WATERLOGGED, waterlogged);
+		super.set(WATERLOGGED_KEY, waterlogged);
 	}
 
 }
