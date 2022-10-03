@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;
 
-public class StairsMock extends BlockDataMock implements Stairs
+public class StairsMock extends BisectedMock implements Stairs
 {
 
 	public StairsMock(@NotNull Material type)
@@ -33,19 +33,6 @@ public class StairsMock extends BlockDataMock implements Stairs
 	{
 		Preconditions.checkNotNull("Shape cannot be null");
 		set(SHAPE_KEY, shape);
-	}
-
-	@Override
-	public @NotNull Half getHalf()
-	{
-		return get(HALF_KEY);
-	}
-
-	@Override
-	public void setHalf(@NotNull Half half)
-	{
-		Preconditions.checkNotNull(half, "Half cannot be null");
-		set(HALF_KEY, half);
 	}
 
 	@Override
